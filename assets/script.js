@@ -25,6 +25,7 @@ const bannerText = document.querySelector("#banner p");
 const dots = document.querySelectorAll(".dot");
 
 let i=0;
+updateBanner(0);
 
 ArrowRight.addEventListener('click',()=>{
 	if (i < nbImg -1)
