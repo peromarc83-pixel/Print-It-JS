@@ -19,49 +19,33 @@ const slides = [
 
 const ArrowLeft=document.querySelector("#arrow_left");
 const ArrowRight=document.querySelector("#arrow_right");
-const nbImg = document.querySelectorAll(".banner-img").length;
-const img = document.querySelectorAll(".banner-img");
+const img = document.querySelector(".banner-img");
 const bannerText = document.querySelector("#banner p");
 const dots = document.querySelectorAll(".dot");
 
 let i=0;
 
-
-ArrowRight.addEventListener('click',()=>{
-	if (i < nbImg -1)
-		i++;
-	else
-		i=0;
+ArrowRight.addEventListener('click', () => {
+    i = (i < slides.length - 1) ? i + 1 : 0;
+    updateBanner(i);
 	console.log(i);
-     updateBanner(i) 
-    });
+});
 
 ArrowLeft.addEventListener('click',()=>{
-	if (i > 0)
-		i--;
-	else
-		i = nbImg -1;
-	console.log(i);
-	 updateBanner(i) 
+      i = (i > 0) ? i - 1 : slides.length - 1;
+    updateBanner(i);
+	console.log(i);	
     });
 
-  function updateBanner(i) {
-   img.forEach((img, index) => {
-        img.style.transform = 'translateX(' + ((index - i) * 100) + '%)';
-    });
+ function updateBanner(i) {
+    img.src = './assets/images/slideshow/' + slides[i].image;
+    bannerText.innerHTML = slides[i].tagLine;
 
-	bannerText.innerHTML = slides[i].tagLine;
-
-
-  
-	dots.forEach((dot,index) => {
-        if (index === i) {
-            dot.style.backgroundColor = 'white';      // dot actif → visible
-        } else {
-            dot.style.backgroundColor = 'transparent';    // autres dots → transparents
-        }
+    dots.forEach((dot, index) => {
+        dot.style.backgroundColor = index === i ? 'white' : 'transparent';
     });
 }
+
   updateBanner(0);
 
 
