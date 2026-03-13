@@ -27,17 +27,17 @@ let i=0;
 
 ArrowRight.addEventListener('click', () => {
     i = (i < slides.length - 1) ? i + 1 : 0;
-    updateBanner(i);
+    updateCarrousel(i);
 	console.log(i);
 });
 
 ArrowLeft.addEventListener('click',()=>{
       i = (i > 0) ? i - 1 : slides.length - 1;
-    updateBanner(i);
+    updateCarrousel(i);
 	console.log(i);	
     });
 
- function updateBanner(i) {
+ function updateCarrousel(i) {
     img.src = './assets/images/slideshow/' + slides[i].image;
     bannerText.innerHTML = slides[i].tagLine;
 
@@ -46,6 +46,6 @@ ArrowLeft.addEventListener('click',()=>{
     });
 }
 
-  updateBanner(0);
+  updateCarrousel(0);
 
 
